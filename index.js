@@ -62,7 +62,7 @@ window.onload = () => {
       if(todoElementOBJ.text.className === '') {
         todoElementOBJ.text.className = 'check';
         todoElementOBJ.delete.style["display"] = 'inline-block';
-        todoElementOBJ.update.style['display'] = 'none';
+        // todoElementOBJ.update.style['display'] = 'none';
       } else {
         todoElementOBJ.text.className = '';
         todoElementOBJ.delete.style['display'] = 'none';
@@ -73,18 +73,18 @@ window.onload = () => {
       /* 체크박스에 체크가 되었다면 이벤트 무시 */
 
       if(todoElementOBJ.text.className === 'check') {
-        todoElementOBJ.update.style['display'] = 'none';
+        // todoElementOBJ.update.style['display'] = 'none';
         return;
       }
 
-      todoElementOBJ.update.style['display'] = 'inline-block';
+      // todoElementOBJ.update.style['display'] = 'inline-block';
     });
 
     itemContainerElements[i].addEventListener('mouseout', () => {
       if(todoElementOBJ.text.className === 'check')
         return;
 
-      todoElementOBJ.update.style['display'] = 'none';
+      // todoElementOBJ.update.style['display'] = 'none';
     });
 
   }

@@ -102,7 +102,7 @@ body {
 .item-container input[type="text"] {
     width: 84%;
     padding: 10px;
-    border: 0;
+    /* border: 0; */
     cursor: text;
     color: #6E7783;
     text-align: start;
@@ -141,7 +141,7 @@ body {
     100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 .item-container .delete {
-    display: none;
+    /* display: none; */
     border: none;
     background-color: #323232;
     color: white;

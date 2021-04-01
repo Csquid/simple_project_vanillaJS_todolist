@@ -1,8 +1,3 @@
 # simple_project_vanillaJS_todolist
-simple_project_vanillaJS_todolist
-
-<br><br><br><br><br>
-
-Todo list git site
--------------
+<br>
 https://csquid.github.io/simple_project_vanillaJS_todolist/

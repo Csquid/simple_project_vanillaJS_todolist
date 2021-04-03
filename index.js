@@ -29,30 +29,34 @@ window.onload = () => {
     const itemContainerElement = document.createElement('div');
     const todoCheckBoxElement  = document.createElement('input');
     const todoTextElement      = document.createElement('input');
-    const updateButtonElement  = document.createElement('input');
-    const deleteButtonElement  = document.createElement('input');
+    const todoUpdateElement    = document.createElement('span');
+    const todoDeleteElement    = document.createElement('span');
+    const iconUpdateElement    = document.createElement('i');
+    const iconDeleteElement    = document.createElement('i');
     
     itemContainerElement.className = 'item-container';
     
-    todoCheckBoxElement.className = 'todo_checkbox';
-    todoCheckBoxElement.type  = "checkbox";
+    todoCheckBoxElement.className = 'todo-checkbox';
+    todoCheckBoxElement.type  = 'checkbox';
       
+    todoTextElement.className = 'todo-text'
     todoTextElement.type = 'text';
     todoTextElement.defaultValue = todoText;
     todoTextElement.readOnly = 'readOnly';
-      
-    updateButtonElement.className = 'update';
-    updateButtonElement.type = 'button';
-    updateButtonElement.value = '🦜';
     
-    deleteButtonElement.className = 'delete';
-    deleteButtonElement.type = 'button';
-    deleteButtonElement.value = 'x';
+    todoUpdateElement.className = 'todo-update';
+    iconUpdateElement.className = 'fas fa-pen-fancy';
+    
+    todoDeleteElement.className = 'todo-delete';
+    iconDeleteElement.className = 'far fa-trash-alt';
+    
+    todoUpdateElement.appendChild(iconUpdateElement);
+    todoDeleteElement.appendChild(iconDeleteElement);
     
     itemContainerElement.appendChild(todoCheckBoxElement);
     itemContainerElement.appendChild(todoTextElement);
-    itemContainerElement.appendChild(updateButtonElement);
-    itemContainerElement.appendChild(deleteButtonElement);
+    itemContainerElement.appendChild(todoUpdateElement);
+    itemContainerElement.appendChild(todoDeleteElement);
       
     itemContentElement.appendChild(itemContainerElement);
   }
@@ -83,7 +87,6 @@ window.onload = () => {
     readTodoList();
     itemContainerElements = document.querySelectorAll(".item-container");
     todoListEvents(itemContainerElements);
-    // debugger;
   }
 
   //Create
@@ -94,6 +97,8 @@ window.onload = () => {
   // todoOBJ: Local Storage 에 삽입할 todo 배열 객체
   // todoOBJ [{ id: 0, todo: 'someting', check: false } , ... ]
   function setCreate(todoInputText, todoOBJ) {
+    // TodoLocalStorage 영역에 데이터 추가
+    // 만약
     localStorage.setItem(TodoLocalStorage, JSON.stringify(todoOBJ));
     // input - todo text 부분에 값을 빈 값으로 만들어줌
     todoInputTextElement.value = '';
@@ -144,6 +149,7 @@ window.onload = () => {
     // 2. 기존에 나와있는 리스트를 모두 지운뒤 리스트를 새로 뿌려준다.
     // 3. 그냥 리스트 밑에 달아버린다.
     
+    // tempTodoListDatas: original todo object에서 새로 추가된 데이터를 삽입 한 후 그 객체를 넘겨준다.
     setCreate(todoInputText, tempTodoListDatas);
     // PagedeleteTodoList();
   })
@@ -163,8 +169,9 @@ window.onload = () => {
         checkbox: null,
         text:     null,
         update:   null,
-        delete:   null        
+        delete:   null
       }
+
       const todoObjectKeys = Object.keys(todoElementOBJ);
   
       for(let j = 0; j < todoObjectKeys.length; j++) {
@@ -172,23 +179,26 @@ window.onload = () => {
       }
   
       todoElementOBJ.checkbox.addEventListener('click', (e) => {
-        console.log(todoElementOBJ.text.className);
-        if(todoElementOBJ.text.className === '') {
-          console.log('break');
-          todoElementOBJ.text.className = 'check';
+        // console.log(todoElementOBJ.text.className);
+        // text안에 class name에 check가 있는지 확인
+        if(todoElementOBJ.text.classList.contains('check')) { //true
+          // console.log('break');
+          todoElementOBJ.text.classList.remove('check');
+          todoElementOBJ.delete.style['display'] = 'none';
+        } else {
+          todoElementOBJ.text.classList.add('check');
           todoElementOBJ.delete.style["display"] = 'inline-block';
           todoElementOBJ.update.style['display'] = 'none';
-        } else {
-          todoElementOBJ.text.className = '';
-          todoElementOBJ.delete.style['display'] = 'none';
         }
       });
       
       itemContainerElements[i].addEventListener('mouseover', (e) => {
         /* 체크박스에 체크가 되었다면 이벤트 무시 */
   
-        if(todoElementOBJ.text.className === 'check') {
+        if(todoElementOBJ.text.classList.contains('check')) {
           todoElementOBJ.update.style['display'] = 'none';
+
+          // debugger;
           return;
         }
   
@@ -196,7 +206,7 @@ window.onload = () => {
       });
   
       itemContainerElements[i].addEventListener('mouseout', () => {
-        if(todoElementOBJ.text.className === 'check')
+        if(todoElementOBJ.text.classList.contains('check'))
           return;
   
         todoElementOBJ.update.style['display'] = 'none';

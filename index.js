@@ -1,7 +1,7 @@
 window.onload = () => {
   const TodoLocalStorage      = "todo";
   let   itemContainerElements = document.querySelector(".item-container");
-  let   todolistLastIDX       = 1;
+  let   todolistLastIDX       = 0;
   
   init();
   
@@ -77,7 +77,7 @@ window.onload = () => {
   function initTodolistLastIDX(lsData) {
     if(lsData) {
       todolistLastIDX = lsData.todolistLastIDX;
-
+      debugger;
       return;
     }
   }
@@ -150,9 +150,9 @@ window.onload = () => {
     }
     
     if(lsData === null) {
-      const tempTodoList = { id: 0, text: todoInputText, check: false };
+      const tempTodoList = { id: 1, text: todoInputText, check: false };
       const todoObjectsBeAdded = { 
-        todolistLastIDX: 0, 
+        todolistLastIDX: 1,
         todolist: [tempTodoList]
       };
       setCreate(tempTodoList, todoObjectsBeAdded);
@@ -166,10 +166,11 @@ window.onload = () => {
     // const tempTodoListDatas = Array.from(lsData);
     // id: todolist last index + 1
     // todo: user todo
-    const todoObjectsBeAdded = { id: todolistLastIDX+1, text: todoInputText, check: false };
-    
-    tempTodoListDatas.todolist.push(todoObjectsBeAdded);
     todolistLastIDX += 1;
+    const todoObjectsBeAdded = { id: todolistLastIDX, text: todoInputText, check: false };
+    
+    tempTodoListDatas.todolistLastIDX = todolistLastIDX;
+    tempTodoListDatas.todolist.push(todoObjectsBeAdded);
 
     console.log('original', lsData);
     console.log('temp: ', tempTodoListDatas);

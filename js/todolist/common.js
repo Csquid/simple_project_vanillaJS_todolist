@@ -42,7 +42,7 @@ export function clone(source) {
 // 이벤트를 모아놓은 함수 이다.
 export function todoListEvents(itemContainerElements) {
   for(let i = 0; i < itemContainerElements.length; i++) {
-    const todoElementDatasetID = Number(itemContainerElements[i].dataset['id']);
+    const todoElementDatasetID = itemContainerElements[i].dataset['id'];
     const todoElementsChildren = itemContainerElements[i].children;
     const todoElementOBJ = {
       checkbox: null,
@@ -64,7 +64,6 @@ export function todoListEvents(itemContainerElements) {
       if(todoElementOBJ.text.classList.contains('check')) {
         todoElementOBJ.update.style['display'] = 'none';
 
-        // debugger;
         return;
       }
 
@@ -106,7 +105,7 @@ export function getListIDX(lsTodoListData, idx) {
   // debugger;
   
   for(let i = 0; i < lsTodoListData.length; i++) {
-    if(lsTodoListData[i].id === idx) {
+    if(lsTodoListData[i].id === Number(idx)) {
       return i;
     }
   }

@@ -1,0 +1,196 @@
+@font-face {
+    font-family: Tegomin;
+    src: url(./font/NewTegomin-Regular.ttf);
+}
+@font-face {
+    font-family: Roboto;
+    src: url(./font/RobotoSlab-VariableFont_wght.ttf);
+}
+.floating-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    display: inline-block;
+    border: 1px solid black;
+    padding: 25px 30px;
+    width: fit-content;
+    height: fit-content;
+    background-color: gainsboro;
+    box-shadow: 6px 10px 21px 0px gainsboro;
+}
+
+
+body {
+    background-color: #F2EEE5;
+}
+.floating-box {
+    padding: 0px;
+    background-color: white;
+    width: 20%;
+    border: none;
+    border-radius: 5px;
+}
+.floating-box h2 {
+    margin: 0;
+    margin-bottom: 15px;
+    text-align: center;
+    padding: 25px 30px;
+    background-color: #464646;
+    border-radius: 5px 5px 0 0;
+    color: white;
+    /* font-size: 2em; */
+    font-family: 'Roboto';
+    letter-spacing: 5px;
+}
+.floating-box input {
+    height: 100%;
+    vertical-align: middle;
+    background-color: white;
+    border: 1px solid black;
+    outline: none;
+    color: black;
+    box-sizing: border-box;
+}
+.floating-box input[type="text"] {
+    text-align: center;
+}
+.floating-box input[type="button"] {
+    cursor: pointer;
+}
+
+.add-todo {
+    width: 100%;
+    height: 30px;
+    padding: 0px 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+.add-todo input::placeholder {
+    color: #A6A6A6;
+}
+.add-todo input[type="text"] {
+    border: none;
+    border-bottom: 1px solid #323232;
+    text-align: start;
+    width: 80%;
+}
+.add-todo input[type="button"] {
+    padding-top: 0.5rem 1rem;
+    border: none;
+    background-color: #464646;
+    border-radius: 3px;
+    color: white;
+    width: 18%;
+    font-family: 'Roboto';
+}
+.add-todo input[type="button"]:hover {
+    background: #1E1E1E;
+}
+.todo-header {
+    padding: 25px 30px;
+}
+.item-content {
+    font-size: 0px;
+}
+.item-container {
+    padding: 5px;
+    border-top: 1px solid #f1f3f5;
+}
+.item-container input[type="text"] {
+    width: 84%;
+    padding: 10px;
+    margin: 0px 5px;
+    border: 0;
+    cursor: text;
+    color: #6E7783;
+    text-align: start;
+}
+.item-container input[type="text"].check {
+    text-decoration: line-through;
+    color: #A6A6A6
+}
+.item-container input[type="checkbox"] {
+    margin: 0%;
+    margin-left: 10px;
+    height: auto;
+}
+.item-container input.checkbox {
+    padding: 0;
+    vertical-align: middle;
+    height: 100%;
+    width: 17px;
+    margin-left: 10px;
+}
+.todo-checkbox,
+.todo-update,
+.todo-delete {
+    color: #464646;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.todo-checkbox {
+    font-size: 17px;
+    margin-left: 10px;
+}
+.todo-update,
+.todo-delete {
+    display: none;
+    font-size: 20px;
+}
+
+.item-container .update {
+    display: none;
+    border: none;
+    padding: 0;
+}
+.item-container .update:hover {
+    animation: shake 0.5s;
+    animation-iteration-count: infinite;
+}
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+.item-container .delete {
+    display: none;
+    border: none;
+    /* background-color: #323232; */
+    background-color: #5A5A5A;
+    color: white;
+}
+.item-container .delete:hover {
+    background-color: black;
+}
+.item-container:first-child {
+    border-top: none;
+}
+.item-container:last-child {
+    margin: 0px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #323232;
+    margin: 0;
+}
+@media all and (min-width: 320px) {
+    .floating-box {
+        width: 80%;
+    }
+    .item-container input[type="text"] {
+        width: 79%;
+    }
+}
+@media all and (min-width: 1028px) {
+    .floating-box {
+       width: 20%;
+    }
+    .item-container input[type="text"] {
+        width: 83%;
+    }
+
+}

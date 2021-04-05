@@ -49,7 +49,7 @@ export function initAddClickEvent() {
     // Array.from 을 사용하게 되면 기존 객체의 데이터를 건드리지 않고 복사해주며 복사된 객체에 데이터에 변경이 있어도 기존에 있던 객체는 Immutable(불변)하다. [Immutable: 불변성]
     const tempTodoListDatas = common.clone(lsData);
     // const tempTodoListDatas = Array.from(lsData);
-    // id: todolist last index + 1
+    // id:   todolist last index + 1
     // todo: user todo
     common.addTodolistLastIDX();
     const todolistLastIDX = common.gettodolistLastIDX();

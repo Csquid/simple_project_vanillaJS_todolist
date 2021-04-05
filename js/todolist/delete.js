@@ -7,12 +7,7 @@ export function deleteLsTodoList(idx) {
   const tempTodoListDatas = common.clone(lsData);
   const tempIDX           = common.getListIDX(tempTodoListDatas.todolist, idx);
 
-  console.log(tempIDX);
-  debugger;
   const remove = tempTodoListDatas.todolist.splice(tempIDX, 1);
-
-  console.log('remove', remove);
-  console.log('tempTodoListDatas', tempTodoListDatas)
 
   localStorage.setItem(common.TodoLS, JSON.stringify(tempTodoListDatas));
   document.querySelector(`[data-id="${idx}"]`).remove();
